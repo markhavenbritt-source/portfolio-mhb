@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta + Ray-Ban — Mark Britt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        /* ── Frame ── */
+        .frame {
+            max-width: 980px;
+            padding: 0 40px;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Project Hero ── */
+        .project-hero {
+            padding: 48px 0 0;
+        }
+
+        .project-hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 32px;
+        }
+
+        /* ── Video ── */
+        .video-wrap {
+            width: 100%;
+            background: #000;
+            margin-bottom: 15px;
+        }
+
+        .video-wrap video {
+            width: 100%;
+            display: block;
+        }
+
+        /* ── White Boxes ── */
+        .white-box {
+            background: #fff;
+            padding: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* ── Color Bar ── */
+        .color-bar {
+            height: 18px;
+            width: 280px;
+            margin: -24px 0 24px -24px;
+            background-image: url('site-images/home-images/bar_meta@2x.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* ── Overview ── */
+        .overview p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 10px;
+        }
+
+        .overview p:last-child {
+            margin-bottom: 0;
+        }
+
+        .overview p strong {
+            font-weight: 700;
+        }
+
+        /* ── Full-width Image ── */
+        .full-image {
+            width: 100%;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* ── Section ── */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        /* ── How We Did It ── */
+        .how-items {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            max-width: 600px;
+        }
+
+        .how-item h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .how-item p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            line-height: 1.9;
+            color: #222;
+        }
+
+        /* ── 3-up Image Grid ── */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        /* ── Impact ── */
+        .impact-list {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .impact-list p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            line-height: 1.9;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .impact-list p::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+        }
+
+        /* ── Partners ── */
+        .partners p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            line-height: 2.0;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .partners p:last-child {
+            margin-bottom: 0;
+        }
+
+        .partners p strong {
+            font-weight: 700;
+        }
+
+        /* ── Project Nav ── */
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #000;
+            padding: 20px 0;
+            margin-top: 15px;
+        }
+
+        .project-nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .project-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 48px 40px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 2.2;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 48px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.png');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .frame {
+                padding: 0 20px;
+            }
+
+            .project-hero h1 {
+                font-size: 38px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 32px 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="frame">
+
+        <!-- Header -->
+        <header>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <nav>
+                <a href="contact.html">contact</a>
+            </nav>
+        </header>
+
+        <!-- Project Hero -->
+        <section class="project-hero">
+            <h1>Meta + Ray-Ban</h1>
+
+            <div class="video-wrap">
+                <video controls poster="site-images/META/imgi_70_thumbnail.webp">
+                    <source src="site-images/META/metavideo_web.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </section>
+
+        <!-- Overview Box -->
+        <div class="white-box overview">
+            <div class="color-bar"></div>
+            <p><strong>PROBLEM:</strong> Smart glasses had advanced features, but the marketing didn't show it. The product felt technical, not desirable.</p>
+            <p><strong>SOLUTION:</strong> Built a lifestyle-driven content system that made the technology feel natural, wearable, and culturally relevant.</p>
+            <p><strong>ROLE:</strong> Design Program Manager</p>
+        </div>
+
+        <!-- Image 1 -->
+        <img class="full-image" src="site-images/META/Meta_imgi_11_0318RBM_horiz03.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+
+        <!-- How We Did It -->
+        <div class="white-box section">
+            <h2>How We Did It</h2>
+            <div class="how-items">
+                <div class="how-item">
+                    <h3>Turned a complex, technical product into shippable creative</h3>
+                    <p>Partnered with executive and technical stakeholders to align on what the product actually needed to communicate. Translated highly specific features into clear creative direction the team could execute against.</p>
+                </div>
+                <div class="how-item">
+                    <h3>Drove alignment across leadership and working teams</h3>
+                    <p>Coordinated between executive stakeholders and senior creatives to keep priorities clear and decisions moving. Ensured the right people were in the room at the right time so work didn't stall or drift.</p>
+                </div>
+                <div class="how-item">
+                    <h3>Built structure around a fast-moving, ambiguous process</h3>
+                    <p>Established timelines, feedback loops, and handoffs across internal teams and external partners. Reduced friction, resolved blockers early, and kept production on track without losing momentum.</p>
+                </div>
+            </div>
+        </div><!-- end white-box -->
+
+        <!-- 3-up Image Grid -->
+        <div class="image-grid">
+            <img src="site-images/META/Meta_imgi_17_0318RBM_vert01.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+            <img src="site-images/META/Meta_imgi_23_0318RBM_vert02.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+            <img src="site-images/META/Meta_imgi_30_0318RBM_vert03.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+        </div>
+
+        <!-- Impact -->
+        <div class="white-box section">
+            <h2>Impact</h2>
+            <div class="impact-list">
+                <p>Aligned stakeholders across Meta and Ray-Ban to support a unified creative direction</p>
+                <p>Enabled scalable content production by establishing clear workflows and handoffs</p>
+                <p>Helped translate complex product features into lifestyle-driven storytelling</p>
+            </div>
+        </div>
+
+        <!-- Image 2 -->
+        <img class="full-image" src="site-images/META/Meta_imgi_50_0318RBM_horiz02.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+
+        <!-- Partners -->
+        <div class="white-box partners">
+            <p><strong>PARTNERS (in-house):</strong> Daniel Ilic (Executive Creative Director), Ryan Wesley Peterson (Creative Director), Megan Trinidad (Creative Director), Cassie Pauley (Junior Designer), Gabby Gardner (Producer), &amp; Taryn Nagla (Producer)</p>
+            <p><strong>PARTNERS (agency):</strong> Special Guest, Whitehouse, &amp; Assembly</p>
+        </div>
+
+        <!-- Project Nav -->
+        <nav class="project-nav">
+            <a href="index.html">← Back to Work</a>
+            <a href="unbabel.html">Next →</a>
+        </nav>
+
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Based in the SF Bay Area.<br>
+            <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+            <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+        </p>
+        <div class="base-bar"></div>
+    </footer>
+
+</body>
+</html>

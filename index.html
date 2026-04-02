@@ -20,14 +20,19 @@
             background: #f0f0f0;
         }
 
+        /* ── Frame: single container that controls all horizontal spacing ── */
+        .frame {
+            max-width: 980px;
+            padding: 0 40px;
+        }
+
         /* ── Header ── */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 20px 0;
             border-bottom: 1px solid #000;
-            max-width: 1050px;
         }
 
         .logo {
@@ -58,7 +63,7 @@
 
         /* ── Hero ── */
         .hero {
-            padding: 60px 40px 50px;
+            padding: 60px 0 50px;
         }
 
         .hero h1 {
@@ -79,18 +84,17 @@
 
         /* ── Client Logos ── */
         .logos {
-            padding: 10px 40px;
+            padding: 10px 0;
             border-top: 1px solid #000;
             border-bottom: 1px solid #000;
             display: flex;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            max-width: 1050px;
+            justify-content: space-between;
+            flex-wrap: nowrap;
         }
 
         .logos img {
-            height: 70px;
+            height: 68px;
             width: auto;
             filter: grayscale(100%);
             opacity: 1.00;
@@ -98,7 +102,7 @@
 
         /* ── Portfolio Grid ── */
         .portfolio {
-            padding: 48px 40px;
+            padding: 48px 0;
         }
 
         .grid {
@@ -111,6 +115,22 @@
         .card {
             background: #fff;
             max-width: 280px;
+            transition: opacity 0.15s;
+        }
+
+        a:has(.card) {
+            display: block;
+            height: 100%;
+        }
+
+        .card {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        a:has(.card):hover .card {
+            opacity: 0.8;
+            cursor: pointer;
         }
 
         .card h3,
@@ -155,8 +175,18 @@
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px;
+            padding: 48px 40px 0;
             margin-top: 20px;
+        }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 48px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.png');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
         }
 
         footer p {
@@ -177,15 +207,8 @@
         /* ── Mobile ── */
         @media (max-width: 768px) {
 
-            header,
-            .logos {
-                max-width: 100%;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .hero {
-                padding: 40px 20px 30px;
+            .frame {
+                padding: 0 20px;
             }
 
             .hero h1 {
@@ -197,13 +220,12 @@
                 line-height: 22pt;
             }
 
-            .logos img {
-                height: 16px;
+            .logos {
                 gap: 12px;
             }
 
-            .portfolio {
-                padding: 32px 20px;
+            .logos img {
+                height: 20px;
             }
 
             .grid {
@@ -232,119 +254,142 @@
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
-        </div>
-        <nav>
-            <a href="#contact">contact</a>
-        </nav>
-    </header>
+    <div class="frame">
 
-    <!-- Hero -->
-    <section class="hero">
-        <h1>Mark Britt</h1>
-        <p>Design player-coach. Pragmatist.<br>
-        Problem-solver. People person. Creative.</p>
-    </section>
-
-    <!-- Client Logos -->
-    <section class="logos">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_meta.png" alt="Meta">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_pagerduty.png" alt="PagerDuty">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_docusign.png" alt="DocuSign">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_kp.png" alt="Kaiser Permanente">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_xero.png" alt="Xero">
-        <img src="site-images/LOGOS_bw_sized/logo_bw_espn.png" alt="ESPN">
-    </section>
-
-    <!-- Portfolio Grid -->
-    <section class="portfolio">
-        <div class="grid">
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_meta@2x.png');"></div>
-                <h3>META + RAY BAN</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
             </div>
+            <nav>
+                <a href="contact.html">contact</a>
+            </nav>
+        </header>
 
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_site@2x.png');"></div>
-                <h3>UNBABEL SITE</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Mark Britt</h1>
+            <p>Design. Problem-solver. Player-coach. <br>
+            Pragmatist. People person. Creative.</p>
+        </section>
+
+        <!-- Client Logos -->
+        <section class="logos">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_meta.webp" alt="Meta" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_pagerduty.webp" alt="PagerDuty" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_docusign.webp" alt="DocuSign" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_kp.webp" alt="Kaiser Permanente" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_xero.webp" alt="Xero" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_espn.webp" alt="ESPN" loading="lazy">
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="portfolio">
+            <div class="grid">
+
+                <a href="meta.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_meta@2x.png');"></div>
+                    <h3>META + RAY BAN</h3>
+                    <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
+                    <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
+                    <p><strong>ROLE:</strong> Design Program Manager</p>
+                </div>
+                </a>
+
+                <a href="unbabel.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_site@2x.png');"></div>
+                    <h3>UNBABEL SITE</h3>
+                    <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
+                    <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
+                    <p><strong>ROLE:</strong> Design Program Manager</p>
+                </div>
+                </a>
+
+                <a href="twinstar.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_twinstar@2x.png');"></div>
+                    <h3>TWIN STAR BRANDING</h3>
+                    <p><strong>PROBLEM:</strong> A new comics platform needed a brand that challenged how the industry looks.</p>
+                    <p><strong>SOLUTION:</strong> Full brand system—logo, palette, type—built around four traits: Confident, Unpretentious, Sharp, Disruptive.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-events.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_events@2x.png');"></div>
+                    <h3>UNBABEL EVENTS</h3>
+                    <p><strong>PROBLEM:</strong> Conference branding lacked punch and didn't match the energy the event deserved.</p>
+                    <p><strong>SOLUTION:</strong> Led a full-team creative pitch and built a scaleable road show booth package for the event circuit.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="pagerduty.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Pagerduty@2x.png');"></div>
+                    <h3>PAGERDUTY ADS</h3>
+                    <p><strong>PROBLEM:</strong> Needed a design-led campaign to drive free trial registrations beyond what word-of-mouth could do.</p>
+                    <p><strong>SOLUTION:</strong> Brought in a copywriter, found the insight—time and stress—and built ads that spoke to IT practitioners.</p>
+                    <p><strong>ROLE:</strong> Art Director</p>
+                </div>
+                </a>
+
+                <a href="possibility.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Possibility@2x.png');"></div>
+                    <h3>POSSIBILITY LAB LOGO</h3>
+                    <p><strong>PROBLEM:</strong> A UC research group needed a new brand that matched the innovation and rigor of its work.</p>
+                    <p><strong>SOLUTION:</strong> Logo, palette, and type built around three core values: problem-solving, data, and optimism.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-ebooks.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_ebooks@2x.png');"></div>
+                    <h3>UNBABEL eBOOKS</h3>
+                    <p><strong>PROBLEM:</strong> Gated eBooks were key lead-gen but needed design polished enough to be worth downloading.</p>
+                    <p><strong>SOLUTION:</strong> Gave designers creative ownership, coached execution, and maintained quality across a full library of titles.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="dimes.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Dimes@2x.png');"></div>
+                    <h3>DIMES BRANDING</h3>
+                    <p><strong>PROBLEM:</strong> A seasonal pop culture site covering the NBA needed a brand as sharp as the writing.</p>
+                    <p><strong>SOLUTION:</strong> Developed a logo and brand direction inspired by The Ringer for a small, remote team.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-illustration.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_illustrat@2x.png');"></div>
+                    <h3>UNBABEL ILLUSTRATIONS</h3>
+                    <p><strong>PROBLEM:</strong> The marketing blog needed custom illustrations every week, consistently, without missing deadlines.</p>
+                    <p><strong>SOLUTION:</strong> Established a visual system and process enabling illustrators to work across diverse rendering styles, on time.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
             </div>
+        </section>
 
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_twinstar@2x.png');"></div>
-                <h3>TWIN STAR BRANDING</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_events@2x.png');"></div>
-                <h3>UNBABEL EVENTS</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_Pagerduty@2x.png');"></div>
-                <h3>PAGERDUTY ADS</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_Possibility@2x.png');"></div>
-                <h3>POSSIBILITY LAB LOGO</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_ebooks@2x.png');"></div>
-                <h3>UNBABEL eBOOKS</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_Dimes@2x.png');"></div>
-                <h3>DIMES BRANDING</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-            <div class="card">
-                <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_illustrat@2x.png');"></div>
-                <h3>UNBABEL ILLUSTRATIONS</h3>
-                <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
-                <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
-                <p><strong>ROLE:</strong> Design Program Manager</p>
-            </div>
-
-        </div>
-    </section>
+    </div><!-- end .frame -->
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <p>
             Based in the SF Bay Area.<br>
             <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
-            <a href="mailto:markhavenbritt@gmail.com">Contact</a>
+            <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
         </p>
+        <div class="base-bar"></div>
     </footer>
 
 </body>

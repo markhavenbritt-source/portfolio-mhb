@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbabel Events — Mark Britt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        .frame { max-width: 980px; padding: 0 40px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .logo {
+            width: 60px; height: 60px;
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .logo img { width: 40px; height: 40px; object-fit: contain; }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav a:hover { text-decoration: underline; }
+
+        .project-hero { padding: 48px 0 0; }
+
+        .project-hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 32px;
+        }
+
+        .video-wrap {
+            width: 100%;
+            background: #000;
+            margin-bottom: 15px;
+        }
+
+        .video-wrap video { width: 100%; display: block; }
+
+        .white-box { background: #fff; padding: 24px; margin-bottom: 15px; }
+
+        .color-bar {
+            height: 18px;
+            width: 280px;
+            margin: -24px 0 24px -24px;
+            background-image: url('site-images/home-images/bar_un_events@2x.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .overview p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 10px;
+        }
+
+        .overview p:last-child { margin-bottom: 0; }
+        .overview p strong { font-weight: 700; }
+
+        .full-image { width: 100%; display: block; margin-bottom: 15px; }
+
+        .section { margin-bottom: 15px; }
+
+        .section h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .how-items { display: flex; flex-direction: column; gap: 20px; }
+
+        .how-item h3 {
+            font-style: italic;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .how-item p { font-size: 12px; line-height: 1.9; }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .image-grid img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+
+        .image-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .image-grid-2 img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+
+        .impact-list p {
+            padding-left: 16px;
+            position: relative;
+            font-size: 12px;
+            line-height: 1.9;
+            margin-bottom: 8px;
+        }
+
+        .impact-list p:last-child { margin-bottom: 0; }
+
+        .impact-list p::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+        }
+
+        .partners p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            line-height: 2.0;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .partners p:last-child { margin-bottom: 0; }
+        .partners p strong { font-weight: 700; }
+
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #000;
+            padding: 20px 0;
+            margin-top: 15px;
+        }
+
+        .project-nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .project-nav a:hover { text-decoration: underline; }
+
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 48px 40px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 2.2;
+        }
+
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 48px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.png');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
+        }
+
+        @media (max-width: 768px) {
+            .frame { padding: 0 20px; }
+            .project-hero h1 { font-size: 38px; }
+            .image-grid, .image-grid-2 { grid-template-columns: 1fr; }
+            footer { padding: 32px 20px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="frame">
+
+        <header>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <nav><a href="contact.html">contact</a></nav>
+        </header>
+
+        <section class="project-hero">
+            <h1>Unbabel Events</h1>
+
+            <div class="video-wrap">
+                <video controls poster="site-images/Unbabel_events/imgi_78_thumbnail.webp">
+                    <source src="site-images/Unbabel_events/Unbabel_Promo_Sequence_05_web.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <div class="white-box overview">
+            <div class="color-bar"></div>
+            <p><strong>PROBLEM:</strong> The previous year's LangOps Universe conference branding lacked punch and didn't reflect the scale or energy the event deserved.</p>
+            <p><strong>SOLUTION:</strong> Led the team through a collaborative creative process, pitching multiple bold directions and fostering a culture of shared ownership. Also developed a scaleable road show booth package for Unbabel's broader event circuit.</p>
+            <p><strong>ROLE:</strong> Creative Director</p>
+        </div>
+
+        <img class="full-image" src="site-images/Unbabel_events/imgi_17_event_A_image1.webp" alt="Unbabel LangOps Universe event branding" loading="lazy">
+
+        <div class="white-box section">
+            <h2>How We Did It</h2>
+            <div class="how-items">
+                <div class="how-item">
+                    <h3>Ran a full-team creative pitch</h3>
+                    <p>Brought the whole team into the creative process: sharing trends, discussing inspiration, and pitching multiple directions. This wasn't just about output—it was about building design culture.</p>
+                </div>
+                <div class="how-item">
+                    <h3>Balanced direction with development</h3>
+                    <p>Was hands-on when refinement mattered, and stepped back to let the team lead. The goal was a more collaborative, higher-functioning creative team alongside a stronger event brand.</p>
+                </div>
+                <div class="how-item">
+                    <h3>Directed the Road Show booth package</h3>
+                    <p>Managed a Senior Designer through a parallel project: a scaleable booth system adjustable to different audiences and venues across Unbabel's event circuit.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="image-grid">
+            <img src="site-images/Unbabel_events/imgi_23_event_B_airtravel.webp" alt="Unbabel event" loading="lazy">
+            <img src="site-images/Unbabel_events/imgi_29_event_C_boothphoto.webp" alt="Unbabel event booth" loading="lazy">
+            <img src="site-images/Unbabel_events/imgi_30_event_C_boothphoto.webp" alt="Unbabel event booth" loading="lazy">
+        </div>
+
+        <div class="white-box section">
+            <h2>Impact</h2>
+            <div class="impact-list">
+                <p>Elevated branding for Unbabel's signature LangOps Universe conference</p>
+                <p>Delivered a scaleable, multi-venue road show event booth system</p>
+                <p>Built a stronger collaborative design culture through shared creative process</p>
+            </div>
+        </div>
+
+        <img class="full-image" src="site-images/Unbabel_events/imgi_37_event_D_LinkedIn_1200x627.webp" alt="Unbabel event social" loading="lazy">
+
+        <div class="image-grid-2">
+            <img src="site-images/Unbabel_events/imgi_51_event_D_SocialPost-Linkedin-1200x627.webp" alt="Unbabel LinkedIn social post" loading="lazy">
+            <img src="site-images/Unbabel_events/imgi_56_LOU_C_Paid-Mike.webp" alt="Unbabel paid social" loading="lazy">
+        </div>
+
+        <div class="white-box partners">
+            <p><strong>PARTNERS:</strong> Bruno Silva (Art Director), Brent Hurlbert (Senior Designer), Tom Groom (Senior Designer), Griff McLaughlin (Intern), Max Kaufman (Project Manager), Phil Hunter (Copywriter), Arlan Smith (Motion Designer)</p>
+        </div>
+
+        <nav class="project-nav">
+            <a href="twinstar.html">← Previous</a>
+            <a href="pagerduty.html">Next →</a>
+        </nav>
+
+    </div>
+
+    <footer>
+        <p>Mark Britt &nbsp;·&nbsp; <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a></p>
+        <div class="base-bar"></div>
+    </footer>
+
+</body>
+</html>
