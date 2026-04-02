@@ -184,7 +184,7 @@
             margin-top: 48px;
             margin-left: -40px;
             margin-right: -40px;
-            background-image: url('site-images/home-images/040126_basebar.png');
+            background-image: url('site-images/home-images/040126_basebar.webp');
             background-repeat: repeat-x;
             background-size: auto 15px;
         }
@@ -250,6 +250,29 @@
                 padding: 32px 20px;
             }
         }
+
+        /* ── Keyframe animations ── */
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .hero h1 {
+            animation: slideInFromLeft 0.7s ease both;
+        }
+        .hero p {
+            animation: slideInFromLeft 0.7s ease 0.5s both;
+        }
+        .logos img:nth-child(1) { animation: fadeIn 0.6s ease 0.5s both; }
+        .logos img:nth-child(2) { animation: fadeIn 0.6s ease 0.65s both; }
+        .logos img:nth-child(3) { animation: fadeIn 0.6s ease 0.8s both; }
+        .logos img:nth-child(4) { animation: fadeIn 0.6s ease 0.95s both; }
+        .logos img:nth-child(5) { animation: fadeIn 0.6s ease 1.1s both; }
+        .logos img:nth-child(6) { animation: fadeIn 0.6s ease 1.25s both; }
     </style>
 </head>
 <body>
@@ -289,7 +312,7 @@
 
                 <a href="meta.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_meta@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_meta@2x.webp');"></div>
                     <h3>META + RAY BAN</h3>
                     <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
                     <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
@@ -299,7 +322,7 @@
 
                 <a href="unbabel.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_site@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_site@2x.webp');"></div>
                     <h3>UNBABEL SITE</h3>
                     <p><strong>PROBLEM:</strong> Needed lifestyle content that articulated their smart glasses cutting edge features stylishly.</p>
                     <p><strong>SOLUTION:</strong> Short films, editorial stills, and motion graphics were developed across a unified visual system bridging both brand identities.</p>
@@ -309,7 +332,7 @@
 
                 <a href="twinstar.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_twinstar@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_twinstar@2x.webp');"></div>
                     <h3>TWIN STAR BRANDING</h3>
                     <p><strong>PROBLEM:</strong> A new comics platform needed a brand that challenged how the industry looks.</p>
                     <p><strong>SOLUTION:</strong> Full brand system—logo, palette, type—built around four traits: Confident, Unpretentious, Sharp, Disruptive.</p>
@@ -319,7 +342,7 @@
 
                 <a href="unbabel-events.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_events@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_events@2x.webp');"></div>
                     <h3>UNBABEL EVENTS</h3>
                     <p><strong>PROBLEM:</strong> Conference branding lacked punch and didn't match the energy the event deserved.</p>
                     <p><strong>SOLUTION:</strong> Led a full-team creative pitch and built a scaleable road show booth package for the event circuit.</p>
@@ -329,7 +352,7 @@
 
                 <a href="pagerduty.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Pagerduty@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Pagerduty@2x.webp');"></div>
                     <h3>PAGERDUTY ADS</h3>
                     <p><strong>PROBLEM:</strong> Needed a design-led campaign to drive free trial registrations beyond what word-of-mouth could do.</p>
                     <p><strong>SOLUTION:</strong> Brought in a copywriter, found the insight—time and stress—and built ads that spoke to IT practitioners.</p>
@@ -339,7 +362,7 @@
 
                 <a href="possibility.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Possibility@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Possibility@2x.webp');"></div>
                     <h3>POSSIBILITY LAB LOGO</h3>
                     <p><strong>PROBLEM:</strong> A UC research group needed a new brand that matched the innovation and rigor of its work.</p>
                     <p><strong>SOLUTION:</strong> Logo, palette, and type built around three core values: problem-solving, data, and optimism.</p>
@@ -349,7 +372,7 @@
 
                 <a href="unbabel-ebooks.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_ebooks@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_ebooks@2x.webp');"></div>
                     <h3>UNBABEL eBOOKS</h3>
                     <p><strong>PROBLEM:</strong> Gated eBooks were key lead-gen but needed design polished enough to be worth downloading.</p>
                     <p><strong>SOLUTION:</strong> Gave designers creative ownership, coached execution, and maintained quality across a full library of titles.</p>
@@ -359,7 +382,7 @@
 
                 <a href="dimes.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Dimes@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Dimes@2x.webp');"></div>
                     <h3>DIMES BRANDING</h3>
                     <p><strong>PROBLEM:</strong> A seasonal pop culture site covering the NBA needed a brand as sharp as the writing.</p>
                     <p><strong>SOLUTION:</strong> Developed a logo and brand direction inspired by The Ringer for a small, remote team.</p>
@@ -369,7 +392,7 @@
 
                 <a href="unbabel-illustration.html" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_illustrat@2x.png');"></div>
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_illustrat@2x.webp');"></div>
                     <h3>UNBABEL ILLUSTRATIONS</h3>
                     <p><strong>PROBLEM:</strong> The marketing blog needed custom illustrations every week, consistently, without missing deadlines.</p>
                     <p><strong>SOLUTION:</strong> Established a visual system and process enabling illustrators to work across diverse rendering styles, on time.</p>
@@ -391,6 +414,7 @@
         </p>
         <div class="base-bar"></div>
     </footer>
+
 
 </body>
 </html>
