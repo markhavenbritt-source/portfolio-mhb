@@ -224,6 +224,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -238,18 +239,24 @@
             text-decoration: underline;
         }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         /* ── Footer ── */
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a {
@@ -263,7 +270,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -286,7 +293,7 @@
             }
 
             footer {
-                padding: 32px 20px 0;
+                padding: 16px 20px 0;
             }
         }
     </style>
@@ -379,6 +386,7 @@
         <nav class="project-nav">
             <a href="index.html">← Back to Work</a>
             <a href="unbabel.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div><!-- end .frame -->

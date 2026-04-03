@@ -99,12 +99,12 @@
 
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 15px;
         }
 
-        .image-grid img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+        .image-grid img { width: 100%; display: block; }
 
         .impact-list p {
             padding-left: 16px;
@@ -140,6 +140,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -152,17 +153,23 @@
 
         .project-nav a:hover { text-decoration: underline; }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a { color: #fff; text-decoration: none; }
@@ -170,7 +177,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -181,8 +188,8 @@
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
             .project-hero h1 { font-size: 38px; }
-            .image-grid { grid-template-columns: 1fr; }
-            footer { padding: 32px 20px 0; }
+            .image-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { padding: 16px 20px 0; }
         }
     </style>
 </head>
@@ -203,7 +210,10 @@
             <h1>Unbabel eBooks</h1>
         </section>
 
-        <img class="full-image" src="site-images/UNBABEL_ebooks/imgi_4_game_ebook_Screen+Shot+2022-10-12+at+2.42.04+PM.webp" alt="Unbabel eBook cover" loading="lazy">
+        <div class="image-grid">
+            <img src="site-images/UNBABEL_ebooks/imgi_61_Screen+Shot+2022-10-12+at+2.01.05+PM.webp" alt="Unbabel travel eBook cover">
+            <img src="site-images/UNBABEL_ebooks/imgi_69_Screen+Shot+2022-10-13+at+8.36.37+AM.png" alt="Unbabel eBook booking forms spread" loading="lazy">
+        </div>
 
         <div class="white-box overview">
             <div class="color-bar"></div>
@@ -212,7 +222,10 @@
             <p><strong>ROLE:</strong> Creative Director</p>
         </div>
 
-        <img class="full-image" src="site-images/UNBABEL_ebooks/imgi_19_Unbabel_color_gaming.webp" alt="Unbabel eBook gaming" loading="lazy">
+        <div class="image-grid">
+            <img src="site-images/UNBABEL_ebooks/imgi_89_Screen+Shot+2022-10-13+at+8.37.50+AM.png" alt="Unbabel eBook lost luggage spread" loading="lazy">
+            <img src="site-images/UNBABEL_ebooks/imgi_76_Screen+Shot+2022-10-13+at+8.37.11+AM.png" alt="Unbabel eBook Before section" loading="lazy">
+        </div>
 
         <div class="white-box section">
             <h2>How We Did It</h2>
@@ -233,9 +246,8 @@
         </div>
 
         <div class="image-grid">
-            <img src="site-images/UNBABEL_ebooks/imgi_25_game_ebook_Screen+Shot+2022-10-12+at+2.41.00+PM.webp" alt="Unbabel eBook spread" loading="lazy">
-            <img src="site-images/UNBABEL_ebooks/imgi_35_game_ebook_Screen+Shot+2022-10-12+at+2.42.04+PM.webp" alt="Unbabel eBook spread" loading="lazy">
-            <img src="site-images/UNBABEL_ebooks/imgi_41_game_ebook_Screen+Shot+2022-10-12+at+2.42.16+PM.webp" alt="Unbabel eBook spread" loading="lazy">
+            <img src="site-images/UNBABEL_ebooks/imgi_25_game_ebook_Screen+Shot+2022-10-12+at+2.41.00+PM.webp" alt="Unbabel gaming eBook cover" loading="lazy">
+            <img src="site-images/UNBABEL_ebooks/imgi_54_game_ebook_Screen+Shot+2022-10-12+at+2.42.50+PM.webp" alt="Unbabel eBook Meet them spread" loading="lazy">
         </div>
 
         <div class="white-box section">
@@ -248,9 +260,8 @@
         </div>
 
         <div class="image-grid">
-            <img src="site-images/UNBABEL_ebooks/imgi_48_game_ebook_Screen+Shot+2022-10-12+at+2.42.35+PM.webp" alt="Unbabel eBook spread" loading="lazy">
-            <img src="site-images/UNBABEL_ebooks/imgi_54_game_ebook_Screen+Shot+2022-10-12+at+2.42.50+PM.webp" alt="Unbabel eBook spread" loading="lazy">
-            <img src="site-images/UNBABEL_ebooks/imgi_61_Screen+Shot+2022-10-12+at+2.01.05+PM.webp" alt="Unbabel eBook spread" loading="lazy">
+            <img src="site-images/UNBABEL_ebooks/imgi_41_game_ebook_Screen+Shot+2022-10-12+at+2.42.16+PM.webp" alt="Unbabel eBook OK Boomer spread" loading="lazy">
+            <img src="site-images/UNBABEL_ebooks/imgi_4_game_ebook_Screen+Shot+2022-10-12+at+2.42.04+PM.webp" alt="Unbabel eBook gaming regulations spread" loading="lazy">
         </div>
 
         <div class="white-box partners">
@@ -260,6 +271,7 @@
         <nav class="project-nav">
             <a href="possibility.html">← Previous</a>
             <a href="dimes.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div>

@@ -99,12 +99,12 @@
 
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 15px;
         }
 
-        .image-grid img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+        .image-grid img { width: 100%; display: block; }
 
         .impact-list p {
             padding-left: 16px;
@@ -129,6 +129,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -141,17 +142,23 @@
 
         .project-nav a:hover { text-decoration: underline; }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a { color: #fff; text-decoration: none; }
@@ -159,7 +166,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -170,8 +177,8 @@
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
             .project-hero h1 { font-size: 38px; }
-            .image-grid { grid-template-columns: 1fr; }
-            footer { padding: 32px 20px 0; }
+            .image-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { padding: 16px 20px 0; }
         }
     </style>
 </head>
@@ -192,7 +199,7 @@
             <h1>Dimes Branding</h1>
         </section>
 
-        <img class="full-image" src="site-images/DIMES/imgi_14_FB_brand_poss_alt+logos+copy+2.webp" alt="Dimes logo" loading="lazy">
+        <img class="full-image" src="site-images/DIMES/imgi_14_FB_brand_poss_alt+logos+copy+2.webp" alt="Dimes logo">
 
         <div class="white-box overview">
             <div class="color-bar"></div>
@@ -202,9 +209,8 @@
         </div>
 
         <div class="image-grid">
-            <img src="site-images/DIMES/imgi_17_0520_celtics_article.webp" alt="Dimes article" loading="lazy">
-            <img src="site-images/DIMES/imgi_21_FB_brand_poss_t-shirt+copy+4.webp" alt="Dimes brand" loading="lazy">
-            <img src="site-images/DIMES/imgi_24_DUBS_article.webp" alt="Dimes article" loading="lazy">
+            <img src="site-images/DIMES/imgi_21_FB_brand_poss_t-shirt+copy+4.webp" alt="Dimes + Daggers lockup" loading="lazy">
+            <img src="site-images/DIMES/imgi_28_FB_Artboard+1+copy+2.webp" alt="Dimes dagger pattern" loading="lazy">
         </div>
 
         <div class="white-box section">
@@ -225,7 +231,10 @@
             </div>
         </div>
 
-        <img class="full-image" src="site-images/DIMES/imgi_28_FB_Artboard+1+copy+2.webp" alt="Dimes brand system" loading="lazy">
+        <div class="image-grid">
+            <img src="site-images/DIMES/imgi_45_0520_stroman_article.png" alt="Dimes comic article" loading="lazy">
+            <img src="site-images/DIMES/imgi_17_0520_celtics_article.webp" alt="Dimes Celtics article" loading="lazy">
+        </div>
 
         <div class="white-box section">
             <h2>Impact</h2>
@@ -237,14 +246,14 @@
         </div>
 
         <div class="image-grid">
-            <img src="site-images/DIMES/imgi_31_0606_dimes_celtswillwin_article.webp" alt="Dimes article" loading="lazy">
-            <img src="site-images/DIMES/imgi_35_FB_brand_poss_t-shirt+copy+5.webp" alt="Dimes brand" loading="lazy">
-            <img src="site-images/DIMES/imgi_38_WK9celts_IG+copy+2.webp" alt="Dimes Instagram" loading="lazy">
+            <img src="site-images/DIMES/imgi_59_WK7ithink_IG.png" alt="Dimes Real Ones comics" loading="lazy">
+            <img src="site-images/DIMES/imgi_38_WK9celts_IG+copy+2.webp" alt="Dimes Daredevil illustration" loading="lazy">
         </div>
 
         <nav class="project-nav">
             <a href="unbabel-ebooks.html">← Previous</a>
             <a href="unbabel-illustration.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div>

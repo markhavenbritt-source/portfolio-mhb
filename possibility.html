@@ -129,6 +129,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -141,17 +142,23 @@
 
         .project-nav a:hover { text-decoration: underline; }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a { color: #fff; text-decoration: none; }
@@ -159,7 +166,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -171,7 +178,7 @@
             .frame { padding: 0 20px; }
             .project-hero h1 { font-size: 38px; }
             .image-grid { grid-template-columns: 1fr; }
-            footer { padding: 32px 20px 0; }
+            footer { padding: 16px 20px 0; }
         }
     </style>
 </head>
@@ -192,7 +199,7 @@
             <h1>Possibility Lab Logo</h1>
         </section>
 
-        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_5_FB_brand_poss_t-shirt+copy.webp" alt="Possibility Lab brand" loading="lazy">
+        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_5_FB_brand_poss_t-shirt+copy.webp" alt="Possibility Lab brand">
 
         <div class="white-box overview">
             <div class="color-bar"></div>
@@ -201,7 +208,9 @@
             <p><strong>ROLE:</strong> Creative Director</p>
         </div>
 
-        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_8_FB_Artboard+1+copy.webp" alt="Possibility Lab mark" loading="lazy">
+        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_42_FB_brand_poss_with+type+copy.png" alt="Possibility Lab logo iterations" loading="lazy">
+        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_8_FB_Artboard+1+copy.webp" alt="Possibility Lab pattern" loading="lazy">
+        <img class="full-image" src="site-images/POSSIBILITY_LABS/imgi_21_FB_brand_poss_t-shirt+copy+3.webp" alt="Possibility Lab lockups" loading="lazy">
 
         <div class="white-box section">
             <h2>How We Did It</h2>
@@ -221,12 +230,6 @@
             </div>
         </div>
 
-        <div class="image-grid">
-            <img src="site-images/POSSIBILITY_LABS/imgi_15_FB_brand_poss_hero+copy.webp" alt="Possibility Lab hero" loading="lazy">
-            <img src="site-images/POSSIBILITY_LABS/imgi_21_FB_brand_poss_t-shirt+copy+3.webp" alt="Possibility Lab t-shirt" loading="lazy">
-            <img src="site-images/POSSIBILITY_LABS/imgi_22_FB_brand_poss_t-shirt+copy+3.webp" alt="Possibility Lab t-shirt" loading="lazy">
-        </div>
-
         <div class="white-box section">
             <h2>Impact</h2>
             <div class="impact-list">
@@ -236,15 +239,10 @@
             </div>
         </div>
 
-        <div class="image-grid">
-            <img src="site-images/POSSIBILITY_LABS/imgi_32_FB_brand_poss_t-shirt+copy.webp" alt="Possibility Lab" loading="lazy">
-            <img src="site-images/POSSIBILITY_LABS/imgi_35_FB_brand_poss_t-shirt+copy.webp" alt="Possibility Lab" loading="lazy">
-            <img src="site-images/POSSIBILITY_LABS/imgi_39_FB_brand_poss_with+type+copy.webp" alt="Possibility Lab with type" loading="lazy">
-        </div>
-
         <nav class="project-nav">
             <a href="pagerduty.html">← Previous</a>
             <a href="unbabel-ebooks.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div>

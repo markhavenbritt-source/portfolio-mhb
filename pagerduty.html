@@ -118,6 +118,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -130,17 +131,23 @@
 
         .project-nav a:hover { text-decoration: underline; }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a { color: #fff; text-decoration: none; }
@@ -148,7 +155,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -156,10 +163,22 @@
             background-size: auto 15px;
         }
 
+        .full-image { width: 100%; display: block; margin-bottom: 15px; }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .image-grid img { width: 100%; display: block; }
+
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
             .project-hero h1 { font-size: 38px; }
-            footer { padding: 32px 20px 0; }
+            .image-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { padding: 16px 20px 0; }
         }
     </style>
 </head>
@@ -180,11 +199,25 @@
             <h1>PagerDuty Ads</h1>
         </section>
 
+        <img class="full-image" src="site-images/PAGERDUTY/pagerduty_ensitu_2025.jpg" alt="PagerDuty ad campaign">
+
         <div class="white-box overview">
             <div class="color-bar"></div>
             <p><strong>PROBLEM:</strong> PagerDuty was growing through word-of-mouth and minimal advertising, but needed a design-led ad campaign to drive free trial registrations at scale.</p>
             <p><strong>SOLUTION:</strong> Brought in a copywriter, ran stakeholder research to uncover the right message—time and stress relief—and built a campaign that spoke directly to IT practitioners' real pain points.</p>
             <p><strong>ROLE:</strong> Art Director</p>
+        </div>
+
+        <div class="image-grid">
+            <img src="site-images/PAGERDUTY/pd_relax.png" alt="PagerDuty Relax ad" loading="lazy">
+            <img src="site-images/PAGERDUTY/pd_lowpoly.png" alt="PagerDuty low-poly ad" loading="lazy">
+            <img src="site-images/PAGERDUTY/pd_ops.png" alt="PagerDuty ops ad" loading="lazy">
+        </div>
+
+        <div class="image-grid">
+            <img src="site-images/PAGERDUTY/pd_sleep.png" alt="PagerDuty sleep ad" loading="lazy">
+            <img src="site-images/PAGERDUTY/pd_forest.png" alt="PagerDuty forest ad" loading="lazy">
+            <img src="site-images/PAGERDUTY/pd_steve.png" alt="PagerDuty Steve ad" loading="lazy">
         </div>
 
         <div class="white-box section">
@@ -217,6 +250,7 @@
         <nav class="project-nav">
             <a href="unbabel-events.html">← Previous</a>
             <a href="possibility.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div>

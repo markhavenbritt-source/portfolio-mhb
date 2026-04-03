@@ -157,6 +157,7 @@
             border-top: 1px solid #000;
             padding: 20px 0;
             margin-top: 15px;
+            position: relative;
         }
 
         .project-nav a {
@@ -169,17 +170,23 @@
 
         .project-nav a:hover { text-decoration: underline; }
 
+        .project-nav .home-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         footer {
             background: #111;
             color: #fff;
-            padding: 48px 40px 0;
+            padding: 24px 40px 0;
             margin-top: 20px;
         }
 
         footer p {
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
-            line-height: 2.2;
+            line-height: 1.8;
         }
 
         footer a { color: #fff; text-decoration: none; }
@@ -187,7 +194,7 @@
 
         .base-bar {
             height: 15px;
-            margin-top: 48px;
+            margin-top: 24px;
             margin-left: -40px;
             margin-right: -40px;
             background-image: url('site-images/home-images/040126_basebar.webp');
@@ -199,7 +206,7 @@
             .frame { padding: 0 20px; }
             .project-hero h1 { font-size: 38px; }
             .image-grid, .image-grid-2 { grid-template-columns: 1fr; }
-            footer { padding: 32px 20px 0; }
+            footer { padding: 16px 20px 0; }
         }
     </style>
 </head>
@@ -276,6 +283,7 @@
         <nav class="project-nav">
             <a href="twinstar.html">← Previous</a>
             <a href="pagerduty.html">Next →</a>
+            <a class="home-link" href="index.html">HOME</a>
         </nav>
 
     </div>
