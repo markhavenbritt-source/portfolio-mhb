@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Mark Britt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        .frame {
+            max-width: 980px;
+            padding: 0 40px;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Contact Section ── */
+        .contact {
+            padding: 60px 0 80px;
+            max-width: 600px;
+        }
+
+        .contact h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #444;
+        }
+
+        /* ── Form ── */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input[type="email"],
+        textarea {
+            width: 100%;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            padding: 12px 14px;
+            border: 1px solid #000;
+            background: #fff;
+            color: #000;
+            outline: none;
+            border-radius: 0;
+            appearance: none;
+        }
+
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #000;
+            background: #fff;
+        }
+
+        textarea {
+            height: 160px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: background 0.15s;
+        }
+
+        button[type="submit"]:hover {
+            background: #333;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 24px 40px 0;
+            margin-top: 20px;
+        }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 24px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.webp');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .frame {
+                padding: 0 20px;
+            }
+
+            .contact h1 {
+                font-size: 40px;
+            }
+
+            footer {
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="frame">
+
+        <!-- Header -->
+        <header>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">work</a>
+            </nav>
+        </header>
+
+        <!-- Contact Form -->
+        <section class="contact">
+            <h1>Say hello.</h1>
+            <p>Drop your email and a note — I'll get back to you.</p>
+
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div>
+                    <label for="email">Your email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <button type="submit">Send it</button>
+            </form>
+        </section>
+
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <p>Mark Britt &nbsp;·&nbsp; <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a></p>
+        <div class="base-bar"></div>
+    </footer>
+
+</body>
+</html>

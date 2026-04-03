@@ -1,0 +1,442 @@
+<!-- test deploy 2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Britt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto mono', monospace;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        /* ── Frame: single container that controls all horizontal spacing ── */
+        .frame {
+            max-width: 980px;
+            padding: 0 40px;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .desktop-break { display: block; }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 60px 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 90px;
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 10px;
+            letter-spacing: -0px;
+        }
+
+        .hero p {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 400;
+            font-size: 22pt;
+            line-height: 30pt;
+        }
+
+        /* ── Client Logos ── */
+        .logos {
+            padding: 10px 0;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
+
+        .logos img {
+            height: 68px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 1.00;
+        }
+
+        /* ── Portfolio Grid ── */
+        .portfolio {
+            padding: 48px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 25px;
+            max-width: 900px;
+        }
+
+        .card {
+            background: #fff;
+            max-width: 280px;
+            transition: opacity 0.15s;
+        }
+
+        a:has(.card) {
+            display: block;
+            height: 100%;
+        }
+
+        .card {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        a:has(.card):hover .card {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .card h3,
+        .card p {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .card p:last-child {
+            padding-bottom: 10px;
+        }
+
+        .card .color-bar {
+            height: 18px;
+            width: 100%;
+            margin-bottom: 16px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card h3 {
+            font-family: 'Roboto Bold', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .card p strong {
+            font-weight: 700;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 24px 40px 0;
+            margin-top: 20px;
+        }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 24px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.webp');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+
+            .frame {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero p {
+                font-size: 12pt;
+                line-height: 18pt;
+            }
+
+            .logos {
+                gap: 12px;
+                overflow: hidden;
+            }
+
+            .logos img {
+                height: 30px;
+                flex-shrink: 1;
+                min-width: 0;
+                object-fit: contain;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px 16px;
+                max-width: 100%;
+            }
+
+            .card {
+                max-width: 100%;
+            }
+
+            .card h3 {
+                font-size: 13px;
+            }
+
+            .card p {
+                font-size: 10px;
+            }
+
+            .desktop-break { display: none; }
+
+            /* Clamp SOLUTION to 2 lines, hide ROLE on mobile */
+            .card p:nth-child(4) {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .card p:last-child {
+                display: none;
+            }
+
+            footer {
+                padding: 16px 20px;
+            }
+        }
+
+        /* ── Fade + slide-in animation ── */
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-in.delay-1 {
+            transition-delay: .35s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="frame">
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+            </div>
+            <nav>
+                <a href="contact.html">contact</a>
+            </nav>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1 class="slide-in">Mark Britt</h1>
+            <p class="slide-in delay-1">Design. Problem&#8209;solver. Player&#8209;coach.<br class="desktop-break"> Pragmatist. People person. Creative.</p>
+        </section>
+
+        <!-- Client Logos -->
+        <section class="logos">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_meta.webp" alt="Meta" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_pagerduty.webp" alt="PagerDuty" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_docusign.webp" alt="DocuSign" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_marvel.webp" alt="Marvel" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_xero.webp" alt="Xero" loading="lazy">
+            <img src="site-images/LOGOS_bw_sized/logo_bw_espn.webp" alt="ESPN" loading="lazy">
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="portfolio">
+            <div class="grid">
+
+                <a href="meta.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_meta@2x.webp');"></div>
+                    <h3>META + RAY BAN</h3>
+                    <p><strong>PROBLEM:</strong> Two powerful brands with competing instincts. Couldn't feel like a compromise.</p>
+                    <p><strong>SOLUTION:</strong> Aligned execs and egos, built a shared system, and directed content that positioned the product as culture, not tech.</p>
+                    <p><strong>ROLE:</strong> Design Program Manager</p>
+                </div>
+                </a>
+
+                <a href="unbabel.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_site@2x.webp');"></div>
+                    <h3>UNBABEL SITE</h3>
+                    <p><strong>PROBLEM:</strong> Smart product. Confusing tech. Low clarity, low conversion.</p>
+                    <p><strong>SOLUTION:</strong> Simplified the narrative, rebuilt structure, and made the site clearly explain what the company does.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="twinstar.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_twinstar@2x.webp');"></div>
+                    <h3>TWIN STAR BRANDING</h3>
+                    <p><strong>PROBLEM:</strong> Comic book brands lean nostalgic. Needed to feel current across a wide range of stories.</p>
+                    <p><strong>SOLUTION:</strong> Built a sharp, modern identity designed to stand apart, not blend in.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-events.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_events@2x.webp');"></div>
+                    <h3>UNBABEL EVENTS</h3>
+                    <p><strong>PROBLEM:</strong> Looked like every other booth. Easy to ignore.</p>
+                    <p><strong>SOLUTION:</strong> Led the pitch and built a system that pulled people in, then scaled across shows large and small.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="pagerduty.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Pagerduty@2x.webp');"></div>
+                    <h3>PAGERDUTY ADS</h3>
+                    <p><strong>PROBLEM:</strong> No real campaign history. Needed growth beyond word of mouth.</p>
+                    <p><strong>SOLUTION:</strong> Found the core hook and built ads that spoke directly to people doing the job.</p>
+                    <p><strong>ROLE:</strong> Art Director</p>
+                </div>
+                </a>
+
+                <a href="possibility.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Possibility@2x.webp');"></div>
+                    <h3>POSSIBILITY LAB LOGO</h3>
+                    <p><strong>PROBLEM:</strong> Serious research. Generic academic brand.</p>
+                    <p><strong>SOLUTION:</strong> Created an identity that felt as thoughtful and rigorous as the work behind it.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-ebooks.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_ebooks@2x.webp');"></div>
+                    <h3>UNBABEL eBOOKS</h3>
+                    <p><strong>PROBLEM:</strong> Gated content only works if it's worth it. This wasn't.</p>
+                    <p><strong>SOLUTION:</strong> Built a system, coached the team, and cut production from 30 hours per ebook to 6.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="dimes.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_Dimes@2x.webp');"></div>
+                    <h3>DIMES BRANDING</h3>
+                    <p><strong>PROBLEM:</strong> Great writing. No presence. Needed to feel current and sharp.</p>
+                    <p><strong>SOLUTION:</strong> Built a bold editorial brand that gave the work a voice before you even read it.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+                <a href="unbabel-illustration.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="color-bar" style="background-image: url('site-images/home-images/bar_un_illustrat@2x.webp');"></div>
+                    <h3>UNBABEL ILLUSTRATIONS</h3>
+                    <p><strong>PROBLEM:</strong> Weekly output. No consistency. Erratic delivery.</p>
+                    <p><strong>SOLUTION:</strong> Built a system that let multiple illustrators move fast without it falling apart.</p>
+                    <p><strong>ROLE:</strong> Creative Director</p>
+                </div>
+                </a>
+
+            </div>
+        </section>
+
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Based in the SF Bay Area.<br>
+            <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+            <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+        </p>
+        <div class="base-bar"></div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
