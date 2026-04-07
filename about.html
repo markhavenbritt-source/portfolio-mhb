@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-777FC5L13S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-777FC5L13S');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Mark Britt</title>
+    <meta property="og:title" content="About — Mark Britt">
+    <meta property="og:description" content="Creative director, player-coach, problem-solver. Based in the SF Bay Area.">
+    <meta property="og:image" content="https://yourmanmark.com/og-image.jpg">
+    <meta property="og:url" content="https://yourmanmark.com/about.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — Mark Britt">
+    <meta name="twitter:description" content="Creative director, player-coach, problem-solver. Based in the SF Bay Area.">
+    <meta name="twitter:image" content="https://yourmanmark.com/og-image.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        .frame {
+            max-width: 980px;
+            padding: 0 40px;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── About Section ── */
+        .about {
+            padding: 60px 0 80px;
+            max-width: 640px;
+        }
+
+        .about h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 40px;
+        }
+
+        .about p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 28px;
+            color: #222;
+        }
+
+        .about p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .about p strong {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .about a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .about a:hover {
+            text-decoration: none;
+        }
+
+        .client-list {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 2.0;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #000;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 24px 40px 0;
+            margin-top: 20px;
+        }
+
+        .base-bar {
+            height: 15px;
+            margin-top: 24px;
+            margin-left: -40px;
+            margin-right: -40px;
+            background-image: url('site-images/home-images/040126_basebar.webp');
+            background-repeat: repeat-x;
+            background-size: auto 15px;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .frame {
+                padding: 0 20px;
+            }
+
+            .about h1 {
+                font-size: 40px;
+            }
+
+            .about p {
+                font-size: 13px;
+            }
+
+            footer {
+                padding: 16px 20px;
+            }
+        }
+
+        /* ── Fade + slide-in animation ── */
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-in.delay-1 { transition-delay: .15s; }
+        .slide-in.delay-2 { transition-delay: .30s; }
+        .slide-in.delay-3 { transition-delay: .45s; }
+        .slide-in.delay-4 { transition-delay: .60s; }
+    </style>
+</head>
+<body>
+
+    <div class="frame">
+
+        <!-- Header -->
+        <header>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">work</a>
+                <a href="contact.html">contact</a>
+            </nav>
+        </header>
+
+        <!-- About -->
+        <section class="about">
+            <h1 class="slide-in">About.</h1>
+
+            <p class="slide-in delay-1">I'm Mark Britt. Creative director, player-coach, problem-solver.</p>
+
+            <p class="slide-in delay-2">I started in New York. I learned that one idea is never enough and that design is storytelling. Now I'm in California, building brands, systems, and teams that deliver across tech, fintech, healthcare, and entertainment.</p>
+
+            <p class="slide-in delay-3">I lead by doing the work. Brand identity, campaigns, motion, content — I build the systems that let teams scale, then I pick up the pen when it counts. Sketching is still how I think, whether I'm shaping a brand or drawing comics.</p>
+
+            <p class="slide-in delay-4">I also run <a href="https://twinstarcomics.com" target="_blank">Twin Star Comics</a>, a digital comics studio. It's not a side hustle. It's the same brain doing the same work in a different format.</p>
+
+            <p>Based in the SF Bay Area. Open to in-house creative roles. <a href="contact.html">Let's talk.</a></p>
+
+            <div class="client-list">
+                Selected clients: Meta · ESPN · Marvel Comics · PagerDuty · Xero · Unbabel · Kaiser Permanente · Coca-Cola · The Andy Warhol Foundation · BBDO · Guinness
+            </div>
+        </section>
+
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Based in the SF Bay Area.<br>
+            <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+            <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+        </p>
+        <div class="base-bar"></div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
