@@ -12,204 +12,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unbabel eBooks — Mark Britt</title>
-    <meta property="og:title" content="Mark Britt — Design Portfolio">
-    <meta property="og:description" content="Design. Problem-solver. Player-coach. Pragmatist. People person. Creative.">
+    <meta property="og:title" content="Unbabel eBooks — Mark Britt">
+    <meta property="og:description" content="Built a system, coached the team, and cut ebook production from 30 hours to 6.">
     <meta property="og:image" content="https://yourmanmark.com/og-image.jpg">
-    <meta property="og:url" content="https://yourmanmark.com">
+    <meta property="og:url" content="https://yourmanmark.com/unbabel-ebooks.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mark Britt — Design Portfolio">
-    <meta name="twitter:description" content="Design. Problem-solver. Player-coach. Pragmatist. People person. Creative.">
+    <meta name="twitter:title" content="Unbabel eBooks — Mark Britt">
+    <meta name="twitter:description" content="Built a system, coached the team, and cut ebook production from 30 hours to 6.">
     <meta name="twitter:image" content="https://yourmanmark.com/og-image.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ── How Items Gap ── */
+        .how-items { gap: 20px; }
 
-        body {
-            font-family: 'Roboto Mono', monospace;
-            color: #000;
-            background: #f0f0f0;
-        }
-
-        .frame { max-width: 980px; padding: 0 40px; }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #000;
-        }
-
-        .logo {
-            width: 60px; height: 60px;
-            background: #000;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .logo img { width: 40px; height: 40px; object-fit: contain; }
-
-        nav a {
-            font-family: 'Space Mono', monospace;
-            font-size: 14px;
-            text-decoration: none;
-            color: #000;
-        }
-
-        nav a:hover { text-decoration: underline; }
-
-        .project-hero { padding: 48px 0 0; }
-
-        .project-hero h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 60px;
-            font-weight: 900;
-            line-height: 1.0;
-            margin-bottom: 32px;
-        }
-
-        .white-box { background: #fff; padding: 24px; margin-bottom: 15px; }
-
-        .color-bar {
-            height: 18px;
-            width: 280px;
-            margin: -24px 0 24px -24px;
-            background-image: url('site-images/home-images/bar_un_ebooks@2x.webp');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .overview p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            line-height: 1.9;
-            margin-bottom: 10px;
-        }
-
-        .overview p:last-child { margin-bottom: 0; }
-        .overview p strong { font-weight: 700; }
-
-        .full-image { width: 100%; display: block; margin-bottom: 15px; }
-
-        .section { margin-bottom: 15px; }
-
-        .section h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .how-items { display: flex; flex-direction: column; gap: 20px; }
-
-        .how-item h3 {
-            font-style: italic;
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-
-        .how-item p { font-size: 12px; line-height: 1.9; }
-
+        /* ── 2-column Image Grid without aspect ratio ── */
         .image-grid {
-            display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
         }
 
         .image-grid img { width: 100%; display: block; }
-
-        .impact-list p {
-            padding-left: 16px;
-            position: relative;
-            font-size: 12px;
-            line-height: 1.9;
-            margin-bottom: 8px;
-        }
-
-        .impact-list p:last-child { margin-bottom: 0; }
-
-        .impact-list p::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-        }
-
-        .partners p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 11px;
-            line-height: 2.0;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .partners p:last-child { margin-bottom: 0; }
-        .partners p strong { font-weight: 700; }
-
-        .project-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #000;
-            padding: 20px 0;
-            margin-top: 15px;
-            position: relative;
-        }
-
-        .project-nav a {
-            font-family: 'Space Mono', monospace;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #000;
-        }
-
-        .project-nav a:hover { text-decoration: underline; }
-
-        .project-nav .home-link {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        footer {
-            background: #111;
-            color: #fff;
-            padding: 24px 40px 0;
-            margin-top: 20px;
-        }
-
-        footer p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        footer a { color: #fff; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-
-        .base-bar {
-            height: 15px;
-            margin-top: 24px;
-            margin-left: -40px;
-            margin-right: -40px;
-            background-image: url('site-images/home-images/040126_basebar.webp');
-            background-repeat: repeat-x;
-            background-size: auto 15px;
-        }
-
-        @media (max-width: 768px) {
-            .frame { padding: 0 20px; }
-            .project-hero h1 { font-size: 38px; }
-            .image-grid { grid-template-columns: repeat(2, 1fr); }
-            footer { padding: 16px 20px 0; }
-        }
     </style>
 </head>
 <body>
@@ -224,6 +51,7 @@
             </a>
             <nav style="display:flex;gap:24px;">
                 <a href="about.html">about</a>
+                <a href="Britt_Mark_2026.pdf" target="_blank">resume</a>
                 <a href="contact.html">contact</a>
             </nav>
         </header>
@@ -233,7 +61,7 @@
         </section>
 
         <div class="image-grid">
-            <img src="site-images/UNBABEL_ebooks/imgi_61_Screen+Shot+2022-10-12+at+2.01.05+PM.webp" alt="Unbabel travel eBook cover">
+            <img src="site-images/UNBABEL_ebooks/imgi_61_Screen+Shot+2022-10-12+at+2.01.05+PM.webp" alt="Unbabel travel eBook cover" loading="lazy">
             <img src="site-images/UNBABEL_ebooks/imgi_69_Screen+Shot+2022-10-13+at+8.36.37+AM.png" alt="Unbabel eBook booking forms spread" loading="lazy">
         </div>
 

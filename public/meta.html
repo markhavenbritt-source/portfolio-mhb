@@ -12,87 +12,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta + Ray-Ban — Mark Britt</title>
-    <meta property="og:title" content="Mark Britt — Design Portfolio">
-    <meta property="og:description" content="Design. Problem-solver. Player-coach. Pragmatist. People person. Creative.">
+    <meta property="og:title" content="Meta + Ray-Ban — Mark Britt">
+    <meta property="og:description" content="Aligned two powerful brands, built a shared system, and directed content that positioned the product as culture.">
     <meta property="og:image" content="https://yourmanmark.com/og-image.jpg">
-    <meta property="og:url" content="https://yourmanmark.com">
+    <meta property="og:url" content="https://yourmanmark.com/meta.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mark Britt — Design Portfolio">
-    <meta name="twitter:description" content="Design. Problem-solver. Player-coach. Pragmatist. People person. Creative.">
+    <meta name="twitter:title" content="Meta + Ray-Ban — Mark Britt">
+    <meta name="twitter:description" content="Aligned two powerful brands, built a shared system, and directed content that positioned the product as culture.">
     <meta name="twitter:image" content="https://yourmanmark.com/og-image.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto Mono', monospace;
-            color: #000;
-            background: #f0f0f0;
-        }
-
-        /* ── Frame ── */
-        .frame {
-            max-width: 980px;
-            padding: 0 40px;
-        }
-
-        /* ── Header ── */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #000;
-        }
-
-        .logo {
-            width: 60px;
-            height: 60px;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        nav a {
-            font-family: 'Space Mono', monospace;
-            font-size: 14px;
-            text-decoration: none;
-            color: #000;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* ── Project Hero ── */
-        .project-hero {
-            padding: 48px 0 0;
-        }
-
-        .project-hero h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 60px;
-            font-weight: 900;
-            line-height: 1.0;
-            margin-bottom: 32px;
-        }
-
         /* ── Video ── */
         .video-wrap {
             width: 100%;
@@ -105,215 +40,9 @@
             display: block;
         }
 
-        /* ── White Boxes ── */
-        .white-box {
-            background: #fff;
-            padding: 24px;
-            margin-bottom: 15px;
-        }
-
-        /* ── Color Bar ── */
-        .color-bar {
-            height: 18px;
-            width: 280px;
-            margin: -24px 0 24px -24px;
-            background-image: url('site-images/home-images/bar_meta@2x.webp');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* ── Overview ── */
-        .overview p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            line-height: 1.9;
-            margin-bottom: 10px;
-        }
-
-        .overview p:last-child {
-            margin-bottom: 0;
-        }
-
-        .overview p strong {
-            font-weight: 700;
-        }
-
-        /* ── Full-width Image ── */
-        .full-image {
-            width: 100%;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        /* ── Section ── */
-        .section {
-            margin-bottom: 24px;
-        }
-
-        .section h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        /* ── How We Did It ── */
-        .how-items {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-            max-width: 600px;
-        }
-
-        .how-item h3 {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            font-weight: 700;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .how-item p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            line-height: 1.9;
-            color: #222;
-        }
-
-        /* ── 3-up Image Grid ── */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
+        /* ── 3-up Image Grid (4/5 aspect ratio) ── */
         .image-grid img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
             aspect-ratio: 4/5;
-        }
-
-        /* ── Impact ── */
-        .impact-list {
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .impact-list p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            line-height: 1.9;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .impact-list p::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-        }
-
-        /* ── Partners ── */
-        .partners p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 11px;
-            line-height: 2.0;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .partners p:last-child {
-            margin-bottom: 0;
-        }
-
-        .partners p strong {
-            font-weight: 700;
-        }
-
-        /* ── Project Nav ── */
-        .project-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #000;
-            padding: 20px 0;
-            margin-top: 15px;
-            position: relative;
-        }
-
-        .project-nav a {
-            font-family: 'Space Mono', monospace;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #000;
-        }
-
-        .project-nav a:hover {
-            text-decoration: underline;
-        }
-
-        .project-nav .home-link {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* ── Footer ── */
-        footer {
-            background: #111;
-            color: #fff;
-            padding: 24px 40px 0;
-            margin-top: 20px;
-        }
-
-        footer p {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        footer a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .base-bar {
-            height: 15px;
-            margin-top: 24px;
-            margin-left: -40px;
-            margin-right: -40px;
-            background-image: url('site-images/home-images/040126_basebar.webp');
-            background-repeat: repeat-x;
-            background-size: auto 15px;
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-            .frame {
-                padding: 0 20px;
-            }
-
-            .project-hero h1 {
-                font-size: 38px;
-            }
-
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                padding: 16px 20px 0;
-            }
         }
     </style>
 </head>
@@ -328,7 +57,9 @@
                     <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
                 </div>
             </a>
-            <nav>
+            <nav style="display:flex;gap:24px;">
+                <a href="about.html">about</a>
+                <a href="Britt_Mark_2026.pdf" target="_blank">resume</a>
                 <a href="contact.html">contact</a>
             </nav>
         </header>
@@ -354,7 +85,7 @@
         </div>
 
         <!-- Image 1 -->
-        <img class="full-image" src="site-images/META/Meta_imgi_11_0318RBM_horiz03.webp" alt="Meta + Ray-Ban campaign" loading="lazy">
+        <img class="full-image" src="site-images/META/Meta_imgi_11_0318RBM_horiz03.webp" alt="Meta + Ray-Ban campaign">
 
         <!-- How We Did It -->
         <div class="white-box section">
