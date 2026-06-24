@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-777FC5L13S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-777FC5L13S');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Britt — Pricing</title>
+    <meta property="og:title" content="Mark Britt — Pricing">
+    <meta property="og:description" content="A pro grade brand built at the speed of start-up. One flat rate: $15k for the month.">
+    <meta property="og:image" content="https://yourmanmark.com/og-image.jpg">
+    <meta property="og:url" content="https://yourmanmark.com/pricing.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mark Britt — Pricing">
+    <meta name="twitter:description" content="A pro grade brand built at the speed of start-up. One flat rate: $15k for the month.">
+    <meta name="twitter:image" content="https://yourmanmark.com/og-image.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ─────────────────────────────────────────────
+           pricing page-specific styles — matches index-v2
+           ───────────────────────────────────────────── */
+        :root {
+            --green: #91ED2E;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .desktop-break { display: block; }
+
+        /* ── Header (full-bleed bar, same as index-v2) ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: #f0f0f0;
+            border-bottom: 1px solid #e4e4e4;
+            width: 100%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .brand .tagline strong {
+            font-weight: 700;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 10px;
+            transform: translateX(-50px);
+        }
+
+        .nav-center a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            text-decoration: none;
+            color: #000;
+            border: 1px solid #000;
+            padding: 6px 16px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .nav-center a:hover,
+        .nav-center a.active {
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-right a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .nav-right a:hover { text-decoration: underline; }
+
+        /* ── Hamburger + mobile menu ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: #000;
+            transition: transform 0.25s ease, opacity 0.2s ease;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #f0f0f0;
+            z-index: 50;
+            flex-direction: column;
+            padding: 110px 24px 32px;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 40px;
+            color: #000;
+            text-decoration: none;
+            padding: 18px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* ── Big Headline ── */
+        .headline {
+            padding: 48px 0 32px;
+        }
+
+        .headline h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 84px;
+            font-weight: 300;
+            line-height: 1.0;
+            letter-spacing: -1px;
+        }
+
+        .headline h1 .accent { font-weight: 900; }
+
+        .headline .sub {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 24px;
+            max-width: 560px;
+        }
+
+        /* ── Value list (four horizontal rows) ── */
+        .valuelist {
+            padding: 4px 0 48px;
+        }
+
+        .vp-row {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            align-items: start;
+            padding: 26px 0;
+            border-top: 2px solid #000;
+        }
+
+        .vp-row:last-child {
+            border-bottom: 2px solid #000;
+        }
+
+        .vp-row .vp-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vp-row .vp-title img {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .vp-row h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .vp-row p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #222;
+            max-width: 580px;
+        }
+
+        /* ── Big statement band (full bleed) ── */
+        .statement {
+            background: #000;
+            color: #fff;
+            padding: 64px 40px;
+        }
+
+        .statement p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 46px;
+            font-weight: 300;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            max-width: 1100px;
+        }
+
+        .statement p .accent {
+            font-weight: 900;
+            color: var(--green);
+        }
+
+        /* ── Comparison ── */
+        .compare {
+            padding: 56px 0;
+        }
+
+        .compare h2 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        /* Boxes meet in the center: overlap the two 2px borders into one line */
+        .compare-grid .compare-col + .compare-col {
+            margin-left: -2px;
+        }
+
+        .compare-col {
+            border: 2px solid #000;
+            padding: 28px 26px;
+        }
+
+        .compare-col.mark {
+            background: #000;
+            color: #fff;
+        }
+
+        .compare-col .col-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .compare-col .col-label img { width: 26px; height: 26px; }
+
+        .compare-col .col-sub {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 22px;
+        }
+
+        .compare-col.mark .col-sub { color: var(--green); }
+
+        .compare-col ul { list-style: none; }
+
+        .compare-col li {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            padding: 12px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .compare-col.mark li { border-top: 1px solid #333; }
+
+        .compare-col li:first-child { border-top: none; }
+
+        .compare-col li strong { font-weight: 700; }
+
+        /* ── What you get (phases) ── */
+        .deliver {
+            padding: 8px 0 56px;
+        }
+
+        .deliver h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 40px;
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .deliver h2 .accent { font-weight: 900; }
+
+        .deliver .lead {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #222;
+            max-width: 620px;
+            margin-bottom: 36px;
+        }
+
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .phase {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .phase .color-bar {
+            height: 18px;
+            width: 100%;
+            margin: 0 0 16px 0;
+            background: var(--green);
+        }
+
+        .phase .phase-body { padding: 0 18px 22px; }
+
+        .phase .phase-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .phase .phase-tag img { width: 15px; height: 15px; }
+
+        .phase h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+
+        .phase p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #222;
+        }
+
+        .phase ul { list-style: none; margin-top: 6px; }
+
+        .phase li {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .phase li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+        }
+
+        /* ── CTA band (full bleed) ── */
+        .cta {
+            background: var(--green);
+            color: #000;
+            padding: 56px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .cta .cta-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 34px;
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            max-width: 620px;
+        }
+
+        .cta .cta-text strong { font-weight: 900; }
+
+        .cta a.cta-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            background: #fff;   /* white rectangle revealed underneath */
+            padding: 16px 28px;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        /* black panel sits on top at rest, then slides away to the right on hover */
+        .cta a.cta-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #000;
+            transform: translateX(0);
+            transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .cta a.cta-btn > span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta a.cta-btn .btn-arrow {
+            transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .cta a.cta-btn:hover { color: #000; }
+        .cta a.cta-btn:hover::before { transform: translateX(101%); }
+        .cta a.cta-btn:hover .btn-arrow { transform: translateX(5px); }
+
+        /* CTA (green) sits flush against the footer (black) — no grey gap */
+        footer { margin-top: 0; }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .frame { padding: 0 20px; }
+
+            header {
+                flex-wrap: nowrap;
+                gap: 14px;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                background: #f0f0f0;
+                z-index: 60;
+                padding: 14px 20px;
+            }
+            .brand .tagline { display: none; }
+            .nav-center, .nav-right { display: none; }
+            .hamburger { display: flex; }
+
+            .headline h1 { font-size: 42px; }
+            .headline .sub { font-size: 14px; }
+
+            .valuelist { padding: 0 0 32px; }
+            .vp-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 0; }
+            .vp-row h3 { font-size: 22px; }
+
+            .statement { padding: 40px 20px; }
+            .statement p { font-size: 28px; }
+
+            .compare-grid { grid-template-columns: 1fr; }
+
+            .deliver h2 { font-size: 28px; }
+            .phases { grid-template-columns: 1fr; }
+
+            .cta { padding: 36px 20px; flex-direction: column; align-items: flex-start; }
+            .cta .cta-text { font-size: 26px; }
+
+            footer { padding: 16px 20px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header (full-bleed) -->
+    <header>
+        <div class="brand">
+            <div class="logo">
+                <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+            </div>
+            <span class="tagline"><strong>Mark Britt</strong> is a fractional creative director.</span>
+        </div>
+        <nav class="nav-center">
+            <a href="index.html#work">work</a>
+            <a href="pricing.html" class="active">pricing</a>
+        </nav>
+        <div class="nav-right">
+            <a href="contact.html">contact</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- Mobile full-screen menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#work">work</a>
+        <a href="pricing.html">pricing</a>
+        <a href="contact.html">contact</a>
+    </div>
+
+    <!-- Headline -->
+    <div class="frame">
+        <section class="headline">
+            <h1 class="slide-in">Your brand built<br>at the speed of<br><span class="accent">start-up.</span></h1>
+            <p class="sub slide-in delay-1">I'm not an agency. I'm a fractional creative director, embedded on your team — straight answers, no bloat. One price, one month.</p>
+        </section>
+
+        <!-- Value list (four horizontal parts) -->
+        <section class="valuelist">
+            <div class="vp-row slide-in">
+                <div class="vp-title">
+                    <img src="site-images/SVG/star.svg" alt="">
+                    <h3>Brand options</h3>
+                </div>
+                <p>Three real directions to react to — not one safe bet dressed up three ways. You choose, I build.</p>
+            </div>
+            <div class="vp-row slide-in">
+                <div class="vp-title">
+                    <img src="site-images/SVG/star.svg" alt="">
+                    <h3>Tactical deliverables</h3>
+                </div>
+                <p>Logo, colors, slide-deck backgrounds, home page design — the pieces you'll actually put to work on day one.</p>
+            </div>
+            <div class="vp-row slide-in">
+                <div class="vp-title">
+                    <img src="site-images/SVG/star.svg" alt="">
+                    <h3>Actionable cost</h3>
+                </div>
+                <p>One flat $15k for the month. Budget it, approve it, go. No estimates, no scope creep, no surprises.</p>
+            </div>
+            <div class="vp-row slide-in">
+                <div class="vp-title">
+                    <img src="site-images/SVG/star.svg" alt="">
+                    <h3>Brand consigliere</h3>
+                </div>
+                <p>Straight answers, no sales pitch. I help you see whether you need to hire in-house, bring in an agency, or run with what you've already got.</p>
+            </div>
+        </section>
+    </div><!-- end .frame -->
+
+    <!-- Big statement (full bleed) -->
+    <div class="statement">
+        <p>No guesswork. No haggling. No agency overhead. Just pro grade brand work, embedded and lightning fast, for a flat <span class="accent">$15k.</span></p>
+    </div>
+
+    <!-- Comparison -->
+    <div class="frame">
+        <section class="compare">
+            <h2>One FCD vs. a traditional agency</h2>
+            <div class="compare-grid">
+                <div class="compare-col mark">
+                    <div class="col-label">
+                        <img src="site-images/SVG/star-green.svg" alt="">
+                        Mark Britt
+                    </div>
+                    <div class="col-sub">Fractional Creative Director</div>
+                    <ul>
+                        <li><strong>Flat fee of $15k</strong></li>
+                        <li>4 weeks to a brand</li>
+                        <li>Embedded on your team</li>
+                        <li>Full focus senior creative</li>
+                        <li>No upsells, no bloat</li>
+                    </ul>
+                </div>
+                <div class="compare-col">
+                    <div class="col-label">Traditional Agency</div>
+                    <div class="col-sub">The usual route</div>
+                    <ul>
+                        <li><strong>$80k – $300k+</strong></li>
+                        <li>3 – 9 months or more</li>
+                        <li>Your brand is one of dozens</li>
+                        <li>Too many designers with too many clients</li>
+                        <li>Upsell on unnecessary packages</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- What you get -->
+        <section class="deliver">
+            <h2>$15k goes a long way.<br>Here's the <span class="accent">month:</span></h2>
+            <p class="lead">Four weeks. Three phases. One brand you can run with — built with you, not handed off over a wall.</p>
+            <div class="phases">
+                <div class="phase slide-in">
+                    <div class="color-bar"></div>
+                    <div class="phase-body">
+                        <div class="phase-tag"><img src="site-images/SVG/star.svg" alt="">Phase 1</div>
+                        <h3>Moodboard exploration</h3>
+                        <p>We align on territory before pixels. I explore references, tone, and feel so we agree on where the brand is headed.</p>
+                    </div>
+                </div>
+                <div class="phase slide-in delay-1">
+                    <div class="color-bar"></div>
+                    <div class="phase-body">
+                        <div class="phase-tag"><img src="site-images/SVG/star.svg" alt="">Phase 2</div>
+                        <h3>Three directions</h3>
+                        <p>Three distinct creative directions to react to — real options, not variations on one idea. You pick the one that fits.</p>
+                    </div>
+                </div>
+                <div class="phase slide-in delay-2">
+                    <div class="color-bar"></div>
+                    <div class="phase-body">
+                        <div class="phase-tag"><img src="site-images/SVG/star.svg" alt="">Phase 3</div>
+                        <h3>One brand, built out</h3>
+                        <p>The chosen direction taken to a finished, usable brand:</p>
+                        <ul>
+                            <li>Logo</li>
+                            <li>Colors</li>
+                            <li>Slide-deck backgrounds</li>
+                            <li>Home page design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div><!-- end .frame -->
+
+    <!-- CTA band (full bleed) -->
+    <div class="cta">
+        <div class="cta-text">Zero to a pro grade brand in <strong>four weeks.</strong></div>
+        <a href="contact.html" class="cta-btn"><span class="btn-label">Let's get to work</span><span class="btn-arrow">&rarr;</span></a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Based in the SF Bay Area.<br>
+            <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+            <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+        </p>
+        <div class="base-bar"></div>
+    </footer>
+
+    <script src="main.js" defer></script>
+
+    <!-- Mobile hamburger menu toggle -->
+    <script>
+        (function () {
+            const burger = document.getElementById('hamburger');
+            const menu = document.getElementById('mobileMenu');
+            if (!burger || !menu) return;
+            function setOpen(open) {
+                menu.classList.toggle('open', open);
+                burger.classList.toggle('open', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                document.body.style.overflow = open ? 'hidden' : '';
+            }
+            burger.addEventListener('click', function () {
+                setOpen(!menu.classList.contains('open'));
+            });
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () { setOpen(false); });
+            });
+        })();
+    </script>
+
+</body>
+</html>

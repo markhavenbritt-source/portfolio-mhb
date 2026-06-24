@@ -48,7 +48,7 @@ header {
 }
 
 nav a {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 14px;
     text-decoration: none;
     color: #000;
@@ -177,7 +177,7 @@ footer a:hover {
 }
 
 .section h2 {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -273,7 +273,7 @@ footer a:hover {
 }
 
 .project-nav a {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
