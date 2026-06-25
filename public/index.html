@@ -508,6 +508,11 @@
             footer { padding: 16px 20px 0; }
 
             #work { scroll-margin-top: 76px; }
+
+            /* ticker text ~30% smaller on phones */
+            .ticker__track span { font-size: 10px; }
+            .ticker__track .x { margin: 0 10px; }
+            .ticker__track .x img { width: 9px; height: 9px; }
         }
 
         /* ── Footer: links pushed to the right ── */
@@ -541,9 +546,11 @@
     <!-- Header (full-bleed: spans the window so contact hugs the right edge) -->
     <header>
         <div class="brand">
-            <div class="logo">
-                <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
-            </div>
+            <a href="index.html" class="logo-link" aria-label="Home">
+                <div class="logo">
+                    <img src="site-images/SVG/Asset 1.svg" alt="Mark Britt">
+                </div>
+            </a>
             <span class="tagline"><strong>Mark Britt</strong> is a <span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">fractional creative director.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
         <nav class="nav-center">
