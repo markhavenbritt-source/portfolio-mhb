@@ -345,18 +345,28 @@
 
         /* ── Pitch copy ── */
         .pitch {
-            padding: 44px 0 40px;
-            max-width: 620px;
+            padding: 44px 0 48px;
+            max-width: 760px;
         }
 
-        .pitch p {
+        .pitch-eyebrow {
             font-family: 'Roboto Mono', monospace;
-            font-size: 18px;
-            line-height: 1.5;
-            margin-bottom: 22px;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 18px;
         }
 
-        .pitch p:last-child { margin-bottom: 0; }
+        .pitch-quote {
+            font-family: 'Roboto', sans-serif;
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            margin-bottom: 0;
+        }
 
         /* ── Black player-coach band ── */
         .band {
@@ -484,7 +494,8 @@
             .logos-group { gap: 36px; padding-right: 36px; }
             .logos-group img { height: 33px; }
 
-            .pitch p { font-size: 15px; }
+            .pitch-eyebrow { font-size: 12px; margin-bottom: 14px; }
+            .pitch-quote { font-size: 26px; line-height: 1.2; }
 
             .band { padding: 20px; flex-direction: column; align-items: flex-start; gap: 14px; scroll-margin-top: 70px; }
 
@@ -605,8 +616,8 @@
     <div class="frame">
         <!-- Pitch copy -->
         <section class="pitch">
-            <p class="slide-in">Experienced creative direction when you need it.</p>
-            <p class="slide-in delay-1">You need the best solution for where you are in your growth. Solutions that scale with you. When it's time for game changing creative, I'll get you the right plan with the right team at the right budget.</p>
+            <p class="pitch-eyebrow slide-in">Experienced creative direction when you need it.</p>
+            <p class="pitch-quote slide-in delay-1">Get the solution that fits where you are now, and scales to where you will be.</p>
         </section>
     </div><!-- end .frame -->
 
