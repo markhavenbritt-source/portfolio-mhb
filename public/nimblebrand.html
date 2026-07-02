@@ -60,12 +60,23 @@
 
         .asset-hero .sub {
             font-family: 'Roboto', sans-serif;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 500;
-            line-height: 1.15;
-            letter-spacing: -0.5px;
-            margin-bottom: 24px;
+            line-height: 1.35;
+            letter-spacing: -0.3px;
+            max-width: 640px;
+            margin-bottom: 30px;
         }
+
+        .asset-hero .sub a {
+            color: #000;
+            text-decoration: underline;
+            text-decoration-color: var(--green);
+            text-decoration-thickness: 3px;
+            text-underline-offset: 3px;
+        }
+
+        .asset-hero .sub a:hover { text-decoration-color: #000; }
 
         .asset-hero .lead {
             font-family: 'Roboto Mono', monospace;
@@ -237,9 +248,8 @@
         <section class="asset-hero">
             <span class="eyebrow slide-in">The Nimble Brand Guide</span>
             <h1 class="slide-in delay-1">Get a brand in 4 weeks for $15K.</h1>
-            <p class="sub slide-in delay-2">How it's done.</p>
-            <p class="lead slide-in delay-3">The one-page rundown of the Nimble Brand Sprint &mdash; what you walk away with, how the four weeks run, and what it costs. Take the PDF with you.</p>
-            <div class="download-row slide-in delay-4">
+            <p class="sub slide-in delay-2">Read the one-page rundown of the Nimble Brand Sprint. Book a 20 minute chat <a href="contact.html">here</a>.</p>
+            <div class="download-row slide-in delay-3">
                 <a class="download-btn" href="nimblebrand.pdf" download
                    onclick="gtag('event','download',{'event_category':'asset','event_label':'nimble_brand_guide'});">
                     <span class="arrow">&#8595;</span> Download the guide
@@ -247,28 +257,6 @@
                 <span class="file-meta">PDF &middot; 2 pages</span>
             </div>
         </section>
-
-        <!-- What's inside -->
-        <section class="inside">
-            <h2>What you walk away with</h2>
-            <ul>
-                <li>Finished, flexible <strong>logo &amp; full asset package</strong></li>
-                <li>Defined <strong>color system &amp; signature graphic</strong></li>
-                <li>Three <strong>core values</strong> &amp; your <strong>positioning line</strong></li>
-                <li><strong>Social imagery direction</strong> with examples</li>
-                <li><strong>On-brand landing page</strong> design</li>
-                <li><strong>Nimble brand guide</strong> ready for a freelancer, an agency, or your internal team</li>
-            </ul>
-        </section>
-
-        <!-- Bottom CTA -->
-        <div class="cta-band">
-            <div class="price">$15K<span>Flat &middot; 4 Weeks</span></div>
-            <div class="book">
-                <a href="contact.html">Book a 20 min fit chat &rarr;</a>
-                <p>markhavenbritt@gmail.com</p>
-            </div>
-        </div>
 
     </div><!-- end .frame -->
 
