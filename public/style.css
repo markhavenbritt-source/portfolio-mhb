@@ -3,6 +3,16 @@
    Global reset, typography, layout, header, footer, and case study base styles
    ────────────────────────────────────────────────────────────────────────────── */
 
+/* ── Ark Sans (self-hosted, licensed) ── */
+@font-face {
+    font-family: 'Ark Sans';
+    src: url('fonts/ArkSans-Medium.woff2') format('woff2'),
+         url('fonts/ArkSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ── Global Reset & Box Sizing ── */
 * {
     margin: 0;
@@ -125,9 +135,9 @@ footer a:hover {
 }
 
 .project-hero h1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ark Sans', 'Roboto', sans-serif;
     font-size: 60px;
-    font-weight: 900;
+    font-weight: 500;
     line-height: 1.0;
     margin-bottom: 32px;
 }

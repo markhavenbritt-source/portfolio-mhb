@@ -11,3 +11,7 @@
 
 # Node
 node_modules/
+
+# Licensed font originals — keep local, do not publish (public repo)
+# Root-anchored: bare 'FONTS/' would also match public/fonts/ (macOS ignorecase)
+/FONTS/
