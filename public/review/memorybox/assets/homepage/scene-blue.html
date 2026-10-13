@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Actual — Orbital Scene</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      /* The scene fills the full viewport */
+      #scene-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      #scene-container canvas {
+        display: block;
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Depth-of-field style blur via backdrop-filter - runs on the
+         compositor, independent of the WebGL render loop. Masked with a
+         gradient so the blur fades in toward the top of the frame rather
+         than a hard edge. */
+      .hero__blur {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 15%,
+          rgba(0, 0, 0, 0.6) 30%,
+          rgba(0, 0, 0, 0.25) 42%,
+          rgba(0, 0, 0, 0) 58%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 15%,
+          rgba(0, 0, 0, 0.6) 30%,
+          rgba(0, 0, 0, 0.25) 42%,
+          rgba(0, 0, 0, 0) 58%
+        );
+      }
+
+      /* White gradient fade at the top of the frame */
+      .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15%;
+        pointer-events: none;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 100%
+        );
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scene-container">
+      <div class="hero__blur"></div>
+      <div class="gradient-overlay"></div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import * as THREE from "three";
+
+      const container = document.getElementById("scene-container");
+
+      // --- Scene setup ---
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xffffff);
+
+      const camera = new THREE.PerspectiveCamera(
+        25,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        1000,
+      );
+
+      // --- Fixed camera ---
+      const FIXED_CAMERA = {
+        position: { x: -2, y: -4, z: 2 },
+        rotation: { x: 60, y: 5, z: 5 }, // degrees, applied in XYZ order
+        fov: 35,
+      };
+
+      camera.fov = FIXED_CAMERA.fov;
+      camera.position.set(
+        FIXED_CAMERA.position.x,
+        FIXED_CAMERA.position.y,
+        FIXED_CAMERA.position.z,
+      );
+      camera.rotation.set(
+        THREE.MathUtils.degToRad(FIXED_CAMERA.rotation.x),
+        THREE.MathUtils.degToRad(FIXED_CAMERA.rotation.y),
+        THREE.MathUtils.degToRad(FIXED_CAMERA.rotation.z),
+      );
+      camera.updateProjectionMatrix();
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      container.appendChild(renderer.domElement);
+
+      // --- Texture loading helper (with white-to-transparent masking) ---
+      // Loads an image, draws it to a canvas, and rewrites the alpha
+      // channel so white pixels become transparent and colored pixels stay
+      // opaque - with a smooth fade in between for anti-aliased edges.
+      // alpha = 255 - min(r, g, b): pure white -> alpha 0, fully saturated
+      // color -> alpha 255, near-white tints fade smoothly.
+      const textureLoader = new THREE.TextureLoader();
+
+      function loadMaskedRingTexture(path, callback) {
+        textureLoader.load(path, (loadedTexture) => {
+          const img = loadedTexture.image;
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const data = imageData.data;
+          for (let i = 0; i < data.length; i += 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const minChannel = Math.min(r, g, b);
+            data[i + 3] = 255 - minChannel;
+          }
+          ctx.putImageData(imageData, 0, 0);
+
+          const tex = new THREE.CanvasTexture(canvas);
+          tex.generateMipmaps = true;
+          tex.minFilter = THREE.LinearMipmapLinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+          tex.wrapS = THREE.RepeatWrapping;
+          tex.wrapT = THREE.ClampToEdgeWrapping;
+
+          callback(tex);
+        });
+      }
+
+      // --- Polar UV remap ---
+      function applyPolarUVs(
+        geometry,
+        innerRadius,
+        outerRadius,
+        vRange = [0, 1],
+        uOffset = 0,
+      ) {
+        const [vMin, vMax] = vRange;
+        const pos = geometry.attributes.position;
+        const uv = geometry.attributes.uv;
+        for (let i = 0; i < pos.count; i++) {
+          const x = pos.getX(i);
+          const y = pos.getY(i);
+          const radius = Math.sqrt(x * x + y * y);
+          const angle = Math.atan2(y, x);
+          let u = (angle + Math.PI) / (2 * Math.PI) + uOffset;
+          u = ((u % 1) + 1) % 1;
+          const t = (radius - innerRadius) / (outerRadius - innerRadius);
+          const v = vMin + t * (vMax - vMin);
+          uv.setXY(i, u, v);
+        }
+        uv.needsUpdate = true;
+      }
+
+      // --- Ring factory ---
+      //
+      // A "ring" here is a flat annulus (donut shape) built from
+      // THREE.RingGeometry, textured using the polar UV remap above so the
+      // orbit strip wraps around it correctly.
+      //
+      // Normally a ring is a single continuous circle (or a single arc
+      // with one gap, via thetaStart/thetaLength). For rings with MULTIPLE
+      // gaps ("more breaks"), pass `arcs` instead: an array of
+      // { thetaStart, thetaLength } segments. Each segment becomes its own
+      // mesh, and all of them are grouped together (THREE.Group) so they
+      // rotate as a single unit, just like a normal ring mesh.
+      function createRing({
+        innerRadius,
+        outerRadius,
+        segments = 256,
+        texture,
+        rotationSpeed = 0,
+        thetaStart = 0,
+        thetaLength = Math.PI * 2,
+        vRange = [0, 1],
+        uOffset = 0,
+        arcs = null, // optional: [{ thetaStart, thetaLength }, ...] for multiple gaps
+      }) {
+        // Shared material - same texture/options regardless of how many
+        // arc pieces this ring is built from.
+        const material = new THREE.MeshBasicMaterial({
+          map: texture,
+          side: THREE.DoubleSide,
+          transparent: true,
+          alphaTest: 0.01,
+        });
+
+        // Builds one arc segment as a mesh: geometry + polar UVs.
+        function buildArcMesh(arcThetaStart, arcThetaLength) {
+          const geometry = new THREE.RingGeometry(
+            innerRadius,
+            outerRadius,
+            segments,
+            1,
+            arcThetaStart,
+            arcThetaLength,
+          );
+          applyPolarUVs(geometry, innerRadius, outerRadius, vRange, uOffset);
+          return new THREE.Mesh(geometry, material);
+        }
+
+        if (arcs) {
+          // Multi-gap ring: one mesh per arc segment, grouped so they all
+          // rotate together. The group itself carries rotationSpeed, same
+          // as a single mesh would.
+          const group = new THREE.Group();
+          for (const arc of arcs) {
+            group.add(buildArcMesh(arc.thetaStart, arc.thetaLength));
+          }
+          group.userData.rotationSpeed = rotationSpeed;
+          return group;
+        }
+
+        // Default: single continuous arc (full circle if thetaLength is
+        // the default Math.PI * 2, or one arc with one gap otherwise).
+        const mesh = buildArcMesh(thetaStart, thetaLength);
+        mesh.userData.rotationSpeed = rotationSpeed;
+        return mesh;
+      }
+
+      // --- Dot ring factory ---
+      // opacity (0-1, default 1) sets the dot material's opacity.
+      // transparent is only enabled when opacity < 1, so fully-opaque
+      // dot rings (the default) behave exactly as before.
+      function createDotRing({
+        radius,
+        count,
+        dotRadius = 0.05,
+        color = 0xffffff,
+        rotationSpeed = 0,
+        sphereSegments = 12,
+        zOffset = 0.02,
+        opacity = 1,
+      }) {
+        const geometry = new THREE.SphereGeometry(
+          dotRadius,
+          sphereSegments,
+          sphereSegments,
+        );
+        const material = new THREE.MeshBasicMaterial({
+          color,
+          transparent: opacity < 1,
+          opacity,
+        });
+        const mesh = new THREE.InstancedMesh(geometry, material, count);
+
+        const dummy = new THREE.Object3D();
+        for (let i = 0; i < count; i++) {
+          const angle = (i / count) * Math.PI * 2;
+          dummy.position.set(
+            Math.cos(angle) * radius,
+            Math.sin(angle) * radius,
+            zOffset,
+          );
+          dummy.updateMatrix();
+          mesh.setMatrixAt(i, dummy.matrix);
+        }
+
+        mesh.userData.rotationSpeed = rotationSpeed;
+        return mesh;
+      }
+
+      // --- Dash texture + ring factory ---
+      // wrapS defaults to ClampToEdgeWrapping: for a full circle
+      // (thetaLength = 2*PI), u spans [0,1] exactly once and clamping vs
+      // repeating makes no difference. For a partial arc, clamping avoids
+      // RepeatWrapping pulling in a bleed from texel 0 (the start of
+      // dash #0, which is opaque) at the u~=1.0 edge of the arc.
+      function createDashTexture({
+        dashCount,
+        dashRatio = 0.6,
+        wrapS = THREE.ClampToEdgeWrapping,
+      }) {
+        const resPerDash = 32;
+        const canvas = document.createElement("canvas");
+        canvas.width = dashCount * resPerDash;
+        canvas.height = 2;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        const dashWidth = resPerDash * dashRatio;
+        for (let i = 0; i < dashCount; i++) {
+          ctx.fillRect(i * resPerDash, 0, dashWidth, canvas.height);
+        }
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = wrapS;
+        tex.wrapT = THREE.RepeatWrapping;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        // Dash patterns are hard-edged stripes - mipmaps aren't needed and,
+        // combined with RepeatWrapping on a non-power-of-two width
+        // (dashCount * 32), can blend across the wrap seam and produce a
+        // faded/discolored dash. Disable mipmaps to avoid that.
+        tex.generateMipmaps = false;
+        tex.minFilter = THREE.LinearFilter;
+        return tex;
+      }
+
+      function createDashRing({
+        innerRadius,
+        outerRadius,
+        segments = 256,
+        rotationSpeed = 0,
+        thetaStart = 0,
+        thetaLength = Math.PI * 2,
+        dashCount = 24,
+        dashRatio = 0.6,
+        color = 0xffffff,
+        uOffset = 0,
+        wrapS = THREE.ClampToEdgeWrapping,
+      }) {
+        const geometry = new THREE.RingGeometry(
+          innerRadius,
+          outerRadius,
+          segments,
+          1,
+          thetaStart,
+          thetaLength,
+        );
+        applyPolarUVs(geometry, innerRadius, outerRadius, [0, 1], uOffset);
+
+        const texture = createDashTexture({ dashCount, dashRatio, wrapS });
+        const material = new THREE.MeshBasicMaterial({
+          map: texture,
+          color,
+          side: THREE.DoubleSide,
+          transparent: true,
+          alphaTest: 0.01,
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.userData.rotationSpeed = rotationSpeed;
+        return mesh;
+      }
+
+      // --- Resize handling ---
+      window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+
+      // --- Animation loop ---
+      let rings = [];
+
+      let scenePaused = false; const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)"); window.addEventListener("message", event => { if(event.source === parent && event.data?.type === "memorybox-scene") scenePaused = event.data.paused; });
+      function animate() {
+        requestAnimationFrame(animate);
+
+        if (scenePaused || document.hidden || reduceMotion.matches) return;
+        for (const ring of rings) {
+          ring.rotation.z += ring.userData.rotationSpeed;
+        }
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // --- Build the scene once the masked texture is ready ---
+      loadMaskedRingTexture("./orbit_strip_blue.png", (orbitTexture) => {
+        // Each entry describes one ring's geometry + animation.
+        // vRange (which slice of the orbit strip texture each ring shows)
+        // is computed automatically just below, proportional to width.
+        const ringConfigs = [
+          { innerRadius: 3, outerRadius: 3.2, rotationSpeed: 0.002 },
+          {
+            innerRadius: 3.2,
+            outerRadius: 3.4,
+            rotationSpeed: -0.002,
+            arcs: [
+              { thetaStart: 0, thetaLength: Math.PI * 0.6 },
+              { thetaStart: Math.PI * 0.85, thetaLength: Math.PI * 0.6 },
+            ],
+          },
+          { innerRadius: 3.4, outerRadius: 3.8, rotationSpeed: 0.002 },
+          {
+            innerRadius: 3.8,
+            outerRadius: 3.89,
+            rotationSpeed: -0.001,
+            // Two 90° arcs with two 90° gaps - evenly split into four
+            // quarters around the circle.
+            arcs: [
+              { thetaStart: Math.PI * 0.15, thetaLength: Math.PI * 0.5 },
+              { thetaStart: Math.PI * 1.15, thetaLength: Math.PI * 0.5 },
+            ],
+          },
+          {
+            innerRadius: 3.89,
+            outerRadius: 3.99,
+            rotationSpeed: -0.003,
+            arcs: [{ thetaStart: Math.PI * 1.4, thetaLength: Math.PI * 1.5 }],
+          },
+          { innerRadius: 3.99, outerRadius: 4.2, rotationSpeed: 0.002 },
+          { innerRadius: 4.2, outerRadius: 4.6, rotationSpeed: 0.002 },
+          { innerRadius: 4.6, outerRadius: 4.8, rotationSpeed: 0.002 },
+          {
+            innerRadius: 4.8,
+            outerRadius: 5.0,
+            rotationSpeed: -0.0015,
+            thetaLength: Math.PI * 1.5,
+          },
+          { innerRadius: 5.0, outerRadius: 5.4, rotationSpeed: 0.002 },
+          { innerRadius: 5.4, outerRadius: 5.8, rotationSpeed: 0.002 },
+          { innerRadius: 5.8, outerRadius: 6.2, rotationSpeed: 0.002 },
+        ];
+
+        const autoRings = ringConfigs.filter((c) => !c.vRange);
+        const totalWidth = autoRings.reduce(
+          (sum, c) => sum + (c.outerRadius - c.innerRadius),
+          0,
+        );
+        let vCursor = 0;
+        for (const config of autoRings) {
+          const widthFraction =
+            (config.outerRadius - config.innerRadius) / totalWidth;
+          config.vRange = [vCursor, vCursor + widthFraction];
+          vCursor += widthFraction;
+        }
+
+        const textureRings = ringConfigs.map((config) =>
+          createRing({ ...config, texture: orbitTexture }),
+        );
+
+        const dotRings = [
+          createDotRing({
+            radius: 3.7,
+            count: 64,
+            dotRadius: 0.03,
+            color: 0x77d4ff,
+            rotationSpeed: -0.0015,
+            sphereSegments: 24,
+          }),
+          createDotRing({
+            radius: 4.22,
+            count: 160,
+            dotRadius: 0.015,
+            color: 0x2299f9,
+            rotationSpeed: -0.001,
+          }),
+          createDotRing({
+            radius: 4.655,
+            count: 120,
+            dotRadius: 0.035,
+            color: 0x2299f9,
+            rotationSpeed: -0.0015,
+            sphereSegments: 24,
+            opacity: 1.0,
+          }),
+          createDotRing({
+            radius: 4.87,
+            count: 240,
+            dotRadius: 0.01,
+            color: 0x41ffff,
+            rotationSpeed: -0.0018,
+          }),
+          createDotRing({
+            radius: 5.2,
+            count: 36,
+            dotRadius: 0.09,
+            color: 0x0e75ed,
+            rotationSpeed: -0.0015,
+            opacity: 1.0,
+            sphereSegments: 24,
+          }),
+          createDotRing({
+            radius: 5.79,
+            count: 64,
+            dotRadius: 0.02,
+            color: 0x2299f9,
+            rotationSpeed: -0.0015,
+          }),
+        ];
+
+        const dashRings = [
+          createDashRing({
+            innerRadius: 3.96,
+            outerRadius: 3.97,
+            rotationSpeed: -0.003,
+            dashCount: 64,
+            dashRatio: 0.4,
+            color: 0x2299f9,
+            thetaStart: Math.PI * 1.4,
+            thetaLength: Math.PI * 1.5,
+          }),
+          createDashRing({
+            innerRadius: 4.36,
+            outerRadius: 4.37,
+            rotationSpeed: -0.002,
+            dashCount: 64,
+            dashRatio: 0.4,
+            color: 0x6fd1e5,
+          }),
+          createDashRing({
+            innerRadius: 4.924,
+            outerRadius: 4.934,
+            rotationSpeed: -0.001,
+            dashCount: 72,
+            dashRatio: 0.4,
+            color: 0x2299f9,
+          }),
+          createDashRing({
+            innerRadius: 5.505,
+            outerRadius: 5.515,
+            rotationSpeed: -0.0015,
+            dashCount: 72,
+            dashRatio: 0.4,
+            color: 0x3496c1,
+            // Same atan2-seam fix as the 3.96-3.97 ring: shift the gap
+            // over theta = pi instead of leaving it inside the arc.
+            thetaStart: Math.PI * 1.5,
+            thetaLength: Math.PI * 1.5,
+          }),
+        ];
+
+        rings = [...textureRings, ...dotRings, ...dashRings];
+        rings.forEach((ring) => scene.add(ring));
+      });
+    </script>
+  </body>
+</html>
