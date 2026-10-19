@@ -54,3 +54,5 @@
 /* Increase the centered logo path radius by 10%. */
 .version-1 .home-hero .orbit-position{--radius:314.6}
 @media(max-width:800px){.version-1 .home-hero .orbit-position{--radius:154}}
+
+.feature-art .feature-task{width:min(80%,240px);height:auto;display:block}
